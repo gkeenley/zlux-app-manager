@@ -32,8 +32,6 @@ export class ContextMenuComponent {
     setTimeout(() => { 
       let menuHeight = contextmenu.nativeElement.clientHeight; // Get inital menu height
       let menuWidth = contextmenu.nativeElement.clientWidth; // Het initial menu width
-      console.log(this.newX)
-      console.log(this.newY)
       this.newY = this.validateY(this.newY, menuHeight);
       this.newX = this.validateX(this.newX, menuWidth);
       contextmenu.nativeElement.style.opacity = 1;
