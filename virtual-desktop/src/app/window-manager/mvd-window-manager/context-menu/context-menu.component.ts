@@ -23,15 +23,15 @@ import { BaseLogger } from 'virtual-desktop-logger';
 })
 export class ContextMenuComponent {
   hovering: ContextMenuItem;
-  newX: number;
-  newY: number;
+  newX: number; // distance from left side of browser to left side of menu
+  newY: number; // distance from top of browser to top of menu
 
   @ViewChild('contextmenu')
   set menu(contextmenu: any) {
     contextmenu.nativeElement.style.opacity = 0;
     setTimeout(() => { 
-      let menuHeight = contextmenu.nativeElement.clientHeight;
-      let menuWidth = contextmenu.nativeElement.clientWidth;
+      let menuHeight = contextmenu.nativeElement.clientHeight; // Get inital menu height
+      let menuWidth = contextmenu.nativeElement.clientWidth; // Het initial menu width
       this.newY = this.validateY(this.newY, menuHeight);
       this.newX = this.validateX(this.newX, menuWidth);
       contextmenu.nativeElement.style.opacity = 1;
@@ -97,6 +97,11 @@ export class ContextMenuComponent {
     if (event && !this.elementRef.nativeElement.contains(event.target)) {
       this.closeContextMenu();
     }
+  }
+
+  @HostListener('window:resize')
+  onResize(): void {
+    this.closeContextMenu();
   }
 }
 
