@@ -50,6 +50,7 @@
   height: 100%;
   margin-left: 130px; /* Prevent overlap with launch widget on the left */
   margin-right: 150px; /* Prevent overlap with lauchbar clock and searcb bar on the right */
+  margin-bottom: 606px;
   padding: 0;
   padding-left: 25px;
   padding-top: 0;

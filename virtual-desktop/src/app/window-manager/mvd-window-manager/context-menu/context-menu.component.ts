@@ -32,6 +32,7 @@ export class ContextMenuComponent {
     setTimeout(() => { 
       let menuHeight = contextmenu.nativeElement.clientHeight; // Get inital menu height
       let menuWidth = contextmenu.nativeElement.clientWidth; // Het initial menu width
+      console.log(this.newY)
       this.newY = this.validateY(this.newY, menuHeight);
       this.newX = this.validateX(this.newX, menuWidth);
       contextmenu.nativeElement.style.opacity = 1;
@@ -71,10 +72,15 @@ export class ContextMenuComponent {
 
   validateY(yPos: number, menuHeight: number): number {
     let menuBottom = menuHeight + yPos;
+    let menuTop = yPos;
     let screenHeight = window.innerHeight - 10; /* Gave a 10 pixel buffer so isn't right on the edge */
     if (menuBottom > screenHeight) {
      let difference = menuBottom - screenHeight;
      yPos = yPos - difference;
+    }
+    if (menuTop < 10) {
+      let difference = 10 - menuTop;
+      yPos = yPos + difference;
     }
     return yPos;
   }
